@@ -158,6 +158,52 @@ pub fn leetcode_42_test() {
     println!("leetcode 42 : {}", trap(vec));
 }
 
+/**
+ * leetcode 209
+ */
+pub fn min_sub_array_len(target: i32, nums: Vec<i32>) -> i32 {
+    let mut left: usize = 0;
+    let mut right: usize = 0;
+    let mut sum: i32 = 0;
+    let mut min_length = nums.len();
+    while sum < target&& right <nums.len() {
+        sum += nums[right];
+        right += 1;
+    }
+    if right >= nums.len() && sum < target
+    {
+        return 0;
+    }
+    right -= 1;
+    min_length = min_length.min(right - left+1);
+    loop  {
+        while sum >= target {
+            sum -= nums[left];
+            left += 1;
+        }
+        left -= 1;
+        sum += nums[left];
+        min_length = min_length.min(right - left+1);
+        right += 1;
+        if right > nums.len()-1
+        {
+            break;
+        }
+        sum += nums[right];
+    }
+
+    min_length as i32
+}
+#[test]
+pub fn leetcode_209_test()
+{
+//    let result =  min_sub_array_len(7,vec![2,3,1,2,4,3]);
+//    assert_eq!(2,result);
+//    assert_eq!(1,min_sub_array_len(4,vec![1,4,4]));
+//    assert_eq!(0,min_sub_array_len(11, vec![1,1,1,1,1,1,1,1]));
+   assert_eq!(3,min_sub_array_len(15, vec![1,2,3,4,5]));
+}
+
 fn main() {
     println!("Hello, world!");
 }
