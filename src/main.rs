@@ -127,6 +127,37 @@ pub fn max_area(height: Vec<i32>) -> i32 {
     }
     area
 }
+
+/**
+* leetcode 42
+*/
+pub fn trap(height: Vec<i32>) -> i32 {
+    let mut prefix_max_vec: Vec<i32> = Vec::new();
+    let mut suffix_max_vec: Vec<i32> = vec![-1; height.len()];
+    let mut x = -1;
+    for i in height.iter() {
+        x = x.max(*i);
+        prefix_max_vec.push(x);
+    }
+    x = -1;
+    let length = height.len() - 1;
+    for (i, v) in height.iter().rev().enumerate() {
+        x = x.max(*v);
+        suffix_max_vec[length - i] = x;
+    }
+    let mut result = 0;
+    for i in 0..height.len() {
+        result += std::cmp::min(prefix_max_vec[i], suffix_max_vec[i]) - height[i];
+    }
+    result
+}
+
+#[test]
+pub fn leetcode_42_test() {
+    let vec = vec![0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1];
+    println!("leetcode 42 : {}", trap(vec));
+}
+
 fn main() {
     println!("Hello, world!");
 }
