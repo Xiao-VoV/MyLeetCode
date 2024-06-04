@@ -53,7 +53,7 @@ mod leetcode_2807 {
     }
 }
 //leetcode 167. 两数之和 II - 输入有序数组
-//解题思路
+//解题思路 快排变种类型
 pub fn two_sum(numbers: Vec<i32>, target: i32) -> Vec<i32> {
     let mut left: usize = 0;
     let mut right: usize = numbers.len() - 1;
@@ -67,6 +67,30 @@ pub fn two_sum(numbers: Vec<i32>, target: i32) -> Vec<i32> {
     }
     println!("{} {}", numbers[left], numbers[right]);
     vec![(left + 1) as i32, (right + 1) as i32]
+}
+
+//leet code 25
+pub fn three_sum(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
+    nums.sort();
+    let mut result: Vec<Vec<i32>> = vec![vec![]];
+    for i in 0..=nums.len() - 3 {
+        let mut left: usize = 0;
+        let mut right: usize = nums.len() - 1;
+        while left < right && (nums[left] + nums[right]) > -nums[i] || right == i {
+            right -= 1;
+        }
+        while left < right && (nums[left] + nums[right]) < nums[i] || left == i {
+            left += 1;
+        }
+        result.push(vec![left as i32, right as i32, i as i32])
+    }
+    result
+}
+#[test]
+pub fn leetcode_25_test() {
+    let v = vec![-1, 0, 1, 2, -1, -4];
+    let x = three_sum(v);
+    print!("{:?}", x);
 }
 
 #[test]
@@ -85,6 +109,24 @@ pub fn leetcode_167_test() {
     print!("{:?}", x);
 }
 
+/**
+ * leetocde 11
+ *
+ */
+pub fn max_area(height: Vec<i32>) -> i32 {
+    let mut left: usize = 0;
+    let mut right: usize = height.len() - 1;
+    let mut area = height[left].min(height[right]) * (right - left) as i32;
+    while left < right {
+        if height[left] < height[right] {
+            left += 1;
+        } else {
+            right -= 1;
+        }
+        area = area.max(height[left].min(height[right]) * (right - left) as i32);
+    }
+    area
+}
 fn main() {
     println!("Hello, world!");
 }
