@@ -1,5 +1,4 @@
 use core::num;
-
 /***
  *2807. 在链表中插入最大公约数
  *中等
@@ -166,27 +165,25 @@ pub fn min_sub_array_len(target: i32, nums: Vec<i32>) -> i32 {
     let mut right: usize = 0;
     let mut sum: i32 = 0;
     let mut min_length = nums.len();
-    while sum < target&& right <nums.len() {
+    while sum < target && right < nums.len() {
         sum += nums[right];
         right += 1;
     }
-    if right >= nums.len() && sum < target
-    {
+    if right >= nums.len() && sum < target {
         return 0;
     }
     right -= 1;
-    min_length = min_length.min(right - left+1);
-    loop  {
+    min_length = min_length.min(right - left + 1);
+    loop {
         while sum >= target {
             sum -= nums[left];
             left += 1;
         }
         left -= 1;
         sum += nums[left];
-        min_length = min_length.min(right - left+1);
+        min_length = min_length.min(right - left + 1);
         right += 1;
-        if right > nums.len()-1
-        {
+        if right > nums.len() - 1 {
             break;
         }
         sum += nums[right];
@@ -195,13 +192,40 @@ pub fn min_sub_array_len(target: i32, nums: Vec<i32>) -> i32 {
     min_length as i32
 }
 #[test]
-pub fn leetcode_209_test()
-{
-//    let result =  min_sub_array_len(7,vec![2,3,1,2,4,3]);
-//    assert_eq!(2,result);
-//    assert_eq!(1,min_sub_array_len(4,vec![1,4,4]));
-//    assert_eq!(0,min_sub_array_len(11, vec![1,1,1,1,1,1,1,1]));
-   assert_eq!(3,min_sub_array_len(15, vec![1,2,3,4,5]));
+pub fn leetcode_209_test() {
+    //    let result =  min_sub_array_len(7,vec![2,3,1,2,4,3]);
+    //    assert_eq!(2,result);
+    //    assert_eq!(1,min_sub_array_len(4,vec![1,4,4]));
+    //    assert_eq!(0,min_sub_array_len(11, vec![1,1,1,1,1,1,1,1]));
+    assert_eq!(3, min_sub_array_len(15, vec![1, 2, 3, 4, 5]));
+}
+
+/**
+ * leetcode 713
+ *
+ */
+pub fn num_subarray_product_less_than_k(nums: Vec<i32>, k: i32) -> i32 {
+    if k <= 1 {
+        return 0;
+    }
+    let mut count = 0;
+    let mut product = 1;
+    let mut left = 0;
+    for (right, value) in nums.iter().enumerate() {
+        product *= value;
+        while product >= k {
+            product /= nums[left];
+            left += 1;
+        }
+        count += right - left + 1;
+    }
+    count as i32
+}
+
+#[test]
+pub fn leetcode_713_test() {
+    assert_eq!(8, num_subarray_product_less_than_k(vec![10, 5, 2, 6], 100));
+    // assert_eq!(8, num_subarray_product_less_than_k(vec![1, 2, 3], 0));
 }
 
 fn main() {
