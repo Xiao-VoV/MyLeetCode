@@ -1,3 +1,4 @@
+mod binary_search;
 use core::num;
 /***
  *2807. 在链表中插入最大公约数
