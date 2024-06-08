@@ -1,3 +1,4 @@
+struct Solution {}
 /**
  * leetcode 2958
  */
@@ -20,6 +21,34 @@ pub fn max_subarray_length(nums: Vec<i32>, k: i32) -> i32 {
         }
     }
     result as i32
+}
+
+/**
+ * leetcode 2730
+ */
+impl Solution {
+    pub fn longest_semi_repetitive_substring(s: String) -> i32 {
+        let mut left = 0;
+        let mut result = 0;
+        let chars: Vec<char> = s.chars().collect::<Vec<char>>();
+        let mut first_pair = 0;
+        for (index, value) in chars.iter().enumerate() {
+            let left_ = left;
+            if index >= 2 && *value == chars[index - 1] {
+                loop {
+                    left += 1;
+                    if chars[left] == chars[left - 1] {
+                        if left == index {
+                            left = left_;
+                        }
+                        break;
+                    }
+                }
+            }
+            result = result.max(index - left + 1);
+        }
+        result as i32
+    }
 }
 //leetcode 209
 //滑动窗口
@@ -57,5 +86,10 @@ mod test {
         // print!("{y}");
         let y = max_subarray_length(vec![1, 4, 4, 3], 1);
         print!("{y}");
+    }
+    #[test]
+    pub fn test_leetcode_2730() {
+        let x = Solution::longest_semi_repetitive_substring("52233".to_string());
+        print!("{x}")
     }
 }
