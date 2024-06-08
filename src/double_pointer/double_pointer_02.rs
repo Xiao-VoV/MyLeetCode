@@ -17,13 +17,7 @@ pub fn count_pairs(mut nums: Vec<i32>, target: i32) -> i32 {
     }
     count as i32
 }
-
-//letcode 2958
-use std::{
-    collections::{hash_map, HashMap},
-    hash::Hash,
-};
-
+use std::collections::HashMap;
 pub fn max_subarray_length(nums: Vec<i32>, k: i32) -> i32 {
     let mut show_count = HashMap::new();
     for i in nums.clone() {
@@ -75,10 +69,6 @@ pub fn three_sum_closest(mut nums: Vec<i32>, target: i32) -> i32 {
 #[cfg(test)]
 mod test {
     use super::*;
-    #[test]
-    pub fn test_leetcode2958() {
-        max_subarray_length(vec![1, 2, 3, 1, 2, 3, 1, 2], 2);
-    }
     #[test]
     pub fn test_leetcode_2824() {
         println!("{}", count_pairs(vec![-6, 2, 5, -2, -7, -1, 3], -2));
