@@ -50,6 +50,16 @@ impl Solution {
         result as i32
     }
 }
+
+/**
+ * leetcode2962
+ */
+use std::collections::BTreeMap;
+impl Solution {
+    pub fn count_subarrays(nums: Vec<i32>, k: i32) -> i64 {
+        0
+    }
+}
 //leetcode 209
 //滑动窗口
 /**
@@ -90,6 +100,12 @@ mod test {
     #[test]
     pub fn test_leetcode_2730() {
         let x = Solution::longest_semi_repetitive_substring("52233".to_string());
+        print!("{x}")
+    }
+
+    #[test]
+    pub fn test_leetcode_2962() {
+        let x = Solution::count_subarrays(vec![1, 3, 2, 3, 3], 2);
         print!("{x}")
     }
 }

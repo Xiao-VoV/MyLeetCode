@@ -17,6 +17,51 @@ pub fn maximum_count(nums: Vec<i32>) -> i32 {
     left.max(nums.len() as i32 - right)
 }
 
+struct Solution;
+
+impl Solution {
+    pub fn bineary_search(vec: &Vec<i32>, target: i64) -> Option<usize> {
+        let mut left: i32 = 0;
+        let mut right: i32 = vec.len() as i32 - 1;
+        while left <= right {
+            let mid = left + (right - left) / 2;
+            if (vec[mid as usize] as i64) < target {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        if left <= vec.len() as i32 - 1 {
+            Some(left as usize)
+        } else {
+            None
+        }
+    }
+
+    pub fn successful_pairs(spells: Vec<i32>, mut potions: Vec<i32>, success: i64) -> Vec<i32> {
+        potions.sort_unstable();
+        potions.iter_mut().for_each(|x| {
+            *x <<= 1;
+        });
+        spells
+            .into_iter()
+            .map(|x| {
+                let y = (success - 1) / (x as i64) * 2 + 1;
+                let y = if y >> 31 != 0 {
+                    i32::MAX
+                } else {
+                    (y & i32::MAX as i64) as i32
+                };
+                (potions.len()
+                    - (match potions.binary_search(&y) {
+                        Ok(_) => unreachable!(),
+                        Err(i) => i,
+                    })) as i32
+            })
+            .collect()
+    }
+}
+
 #[cfg(test)]
 mod test {
     use super::*;
@@ -66,5 +111,19 @@ mod test {
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
             ])
         );
+    }
+
+    #[test]
+    pub fn test_2300() {
+        // let mut spell = vec![5, 1, 3];
+        // let mut position = vec![1, 2, 3, 4, 5];
+        // let success: i64 = 7;
+        // let result = Solution::successful_pairs(spell, position, success);
+        // println!("{result:?}");
+        let mut spell = vec![3, 1, 2];
+        let mut position = vec![8, 5, 8];
+        let success: i64 = 16;
+        let result = Solution::successful_pairs(spell, position, success);
+        println!("{result:?}");
     }
 }
