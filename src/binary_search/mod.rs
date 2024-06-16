@@ -142,6 +142,21 @@ impl Solution {
         }
         left as i32
     }
+    //山峰变山谷
+    pub fn find_min(mut nums: Vec<i32>) -> i32 {
+        let risht_value = nums[nums.len() - 1];
+        let mut left: i32 = 0;
+        let mut right: i32 = nums.len() as i32 - 1;
+        while left < right {
+            let mid: i32 = left + (right - left) / 2;
+            if nums[mid as usize] < nums[right as usize] {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        nums[left as usize]
+    }
 }
 
 #[cfg(test)]
