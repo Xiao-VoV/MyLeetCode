@@ -20,7 +20,8 @@ pub fn maximum_count(nums: Vec<i32>) -> i32 {
 struct Solution;
 
 impl Solution {
-    pub fn bineary_search(vec: &Vec<i32>, target: i64) -> Option<usize> {
+    //闭区间写法
+    pub fn bineary_search(vec: &Vec<i32>, target: i64) -> Result<usize, usize> {
         let mut left: i32 = 0;
         let mut right: i32 = vec.len() as i32 - 1;
         while left <= right {
@@ -32,9 +33,9 @@ impl Solution {
             }
         }
         if left <= vec.len() as i32 - 1 {
-            Some(left as usize)
+            Ok(left as usize)
         } else {
-            None
+            Err(0)
         }
     }
 
@@ -59,6 +60,51 @@ impl Solution {
                     })) as i32
             })
             .collect()
+    }
+}
+
+//leetcode 275
+impl Solution {
+    pub fn h_index(citations: Vec<i32>) -> i32 {
+        let length: i32 = citations.len() as i32 - 1;
+        let mut left: i32 = 0;
+        let mut right: i32 = citations.len() as i32 - 1;
+        while left <= right {
+            let mid: i32 = left + (right - left) / 2;
+            if (length - mid + 1) > citations[mid as usize] {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        length - left + 1
+    }
+}
+//leetcode 875
+impl Solution {
+    fn get_time(piles: &Vec<i32>, speed: i32, limit: i32) -> bool {
+        let mut result = piles.len() as i32;
+        for i in piles {
+            result += (*i - 1) / speed;
+            if result > limit {
+                return false;
+            }
+        }
+        true
+    }
+    pub fn min_eating_speed(mut piles: Vec<i32>, h: i32) -> i32 {
+        piles.sort_unstable();
+        let mut min = 0;
+        let mut max = piles[piles.len() - 1];
+        while min + 1 < max {
+            let mid = min + (max - min) / 2;
+            if Solution::get_time(&piles, mid, h) {
+                max = mid;
+            } else {
+                min = mid;
+            }
+        }
+        max
     }
 }
 
@@ -124,6 +170,19 @@ mod test {
         let mut position = vec![8, 5, 8];
         let success: i64 = 16;
         let result = Solution::successful_pairs(spell, position, success);
+        println!("{result:?}");
+    }
+    #[test]
+    pub fn test_275() {
+        let mut position = vec![0];
+        let result = Solution::h_index(position);
+        println!("{result:?}");
+    }
+
+    #[test]
+    pub fn test_875() {
+        let mut position = vec![805306368, 805306368, 805306368];
+        let result = Solution::min_eating_speed(position, 1000000000);
         println!("{result:?}");
     }
 }
