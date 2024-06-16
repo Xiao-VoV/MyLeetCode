@@ -1,3 +1,5 @@
+use core::num;
+
 //leetcode2529
 pub fn maximum_count(nums: Vec<i32>) -> i32 {
     let mut left: i32 = 0;
@@ -105,6 +107,39 @@ impl Solution {
             }
         }
         max
+    }
+
+    // fn total_time(time:&Vec<i32>,index:&mut usize,total_trips:&i32)->bool{
+    //     let mut i =0;
+    //     while *index>=0{
+
+    //     }
+    //     true
+    // }
+    // pub fn minimum_time(time: Vec<i32>, total_trips: i32) -> i64 {
+    //     time.sort_unstable();
+    //     let mut min = 1;
+    //     let mut max = time.len() - 1;
+    //     while min<= max{
+    //         let mid = min+(max-min)/2
+    //         if
+    //     }
+    // }
+
+    //我觉得可以用高数的极值定理思想类比理解162题，题目要找的是区间极大值，由于极值点的导数为0，而极大值左升右降，左侧导数大于0，右侧导数小于0；
+    //与右侧值比较大小的过程类似于求导，导数大于0就向右侧，在右侧找，导数小于0就向左找。汇合点就是满足左升右降的极大值。
+    pub fn find_peak_element(nums: Vec<i32>) -> i32 {
+        let mut left: i32 = 0;
+        let mut right: i32 = nums.len() as i32 - 2;
+        while left <= right {
+            let mid: i32 = left + (right - left) / 2;
+            if nums[mid as usize + 1] > nums[mid as usize] {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        left as i32
     }
 }
 
