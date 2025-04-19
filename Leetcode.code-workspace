@@ -6,6 +6,7 @@
 		}
 	],
 	"settings": {
-		"commentTranslate.source": "Google"
+		"commentTranslate.source": "Google",
+		"markdown.validate.enabled": true
 	}
 }
