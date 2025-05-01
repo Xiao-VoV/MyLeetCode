@@ -7,6 +7,7 @@
 	],
 	"settings": {
 		"commentTranslate.source": "Google",
-		"markdown.validate.enabled": true
+		"markdown.validate.enabled": true,
+		"commentTranslate.hover.enabled": true
 	}
 }
