@@ -57,23 +57,26 @@ var removeDuplicateLetters = function (s) {
     for (let char of s) {
         count[char] = (count[char] || 0) + 1;
     }
-    // console.log(count);
-    const is_in_stack = {};
+
     const stack = [];
+    const is_in_stack = new Map();
     for (let char of s) {
-        count[char]--;
-        if (is_in_stack[char]) continue;
+        count[char]--; // 每次遍历都递减计数
+
+        if (is_in_stack.has(char)) {
+            continue;
+        }
 
         while (
             stack.length > 0 &&
-            stack[stack.length - 1] > char &&
-            count[stack[stack.length - 1]] > 0
+            char < stack[stack.length - 1] &&
+            count[stack[stack.length - 1]] > 0 // 确保栈顶字符后续还会出现
         ) {
-            const popped = stack.pop();
-            is_in_stack[popped] = false;
+            is_in_stack.delete(stack.pop()); // 正确使用Map的delete方法
         }
+
         stack.push(char);
-        is_in_stack[char] = true;
+        is_in_stack.set(char, true); // 正确使用Map的set方法
     }
     return stack.join("");
 };
