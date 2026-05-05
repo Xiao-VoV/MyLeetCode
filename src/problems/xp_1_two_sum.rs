@@ -3,7 +3,7 @@
  *
  * [1] Two Sum
  */
-use crate::Solution;
+use super::Solution;
 // @lc code=start
 impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {

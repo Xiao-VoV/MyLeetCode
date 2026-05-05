@@ -1,6 +1,4 @@
-mod array;
-
-struct Solution();
+mod problems;
 
 fn main() {
     println!("Hello, world!");
