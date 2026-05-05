@@ -1,5 +1,3 @@
-use std::result;
-
 /*
  * @lc app=leetcode.cn id=49 lang=rust
  *
