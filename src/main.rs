@@ -1,4 +1,6 @@
-mod 最长回文子串;
+mod array;
+
+struct Solution();
 
 fn main() {
     println!("Hello, world!");
