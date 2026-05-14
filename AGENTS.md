@@ -67,10 +67,11 @@ Keep generated changes narrowly scoped. Do not rewrite unrelated solution files 
 The user is practicing the LeetCode China "Top 100 Liked" study plan:
 
 - Study plan URL: `https://leetcode.cn/studyplan/top-100-liked/`
-- When the user says `下一题`, provide the next problem in this study plan, including the problem link and LeetCode problem number.
+- When the user says `下一题`, provide the next problem in this study plan, including the LeetCode problem number, problem link, and the problem's category or pattern. Also recommend other problems of the same type or pattern with LeetCode links; these related recommendations are not limited to the Top 100 Liked study plan.
 - When the user says `给我一些思路`, explain the current problem's approach progressively. Start with a brute-force idea, explain its limitations, then guide toward the optimal solution. Do not provide code in this step.
 - 当用户说`实现`，在对话中提供完整的代码。除非用户明确要求修改文件，否则不要编辑存储库文件。
 - When the user says `检查代码`, only review the user's code and reasoning. If the solving idea is incorrect, state that the approach is not viable and explain the correct solving idea. If the algorithm is viable but the implementation is wrong, point out the specific bug or mistake. If a more optimal solution exists, mention that an optimal solution exists and briefly describe its direction, but do not provide complete code in this step.
+- 当用户说`优化代码质量`，在用户正确的代码思路基础上，对当前代码做代码质量层面的优化建议，并在对话中提供完整的优化后代码。除非用户明确要求修改文件，否则不要编辑存储库文件。
 - When the user says `给我同类型的题目`, recommend problems of the same type or pattern. These recommendations are not limited to the Top 100 Liked study plan.
 
 Track the current problem based on the conversation and active solution file when possible. If the next problem or current problem is ambiguous, ask a concise clarifying question before proceeding.
