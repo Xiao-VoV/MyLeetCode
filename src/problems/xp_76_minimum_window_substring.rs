@@ -99,8 +99,8 @@ impl Solution {
 
             while Self::contain(&vec_s[left..right], &vec_t) {
                 result = String::from_iter(vecs_char[left..right].to_owned().iter());
-                
-                left +=1;
+
+                left += 1;
             }
         }
 
@@ -108,9 +108,8 @@ impl Solution {
     }
 
     fn contain(a: &[i32], b: &Vec<i32>) -> bool {
-        for (i,v) in b.iter().enumerate(){
-            if a[i] < *v
-            {
+        for (i, v) in b.iter().enumerate() {
+            if a[i] < *v {
                 return false;
             }
         }

@@ -63,7 +63,7 @@ impl Solution {
             cur += nums[i];
             if cur > nums[i] {
                 max = max.max(cur);
-            }else{
+            } else {
                 cur = nums[i];
                 max = max.max(cur);
             }
