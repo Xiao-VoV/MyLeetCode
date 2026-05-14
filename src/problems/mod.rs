@@ -19,4 +19,8 @@ mod xp_56_merge_intervals;
 mod xp_73_set_matrix_zeroes;
 mod xp_76_minimum_window_substring;
 mod xp_48_rotate_image;
+mod xp_206_reverse_linked_list;
+mod xp_234_palindrome_linked_list;
+
+
 struct Solution();
