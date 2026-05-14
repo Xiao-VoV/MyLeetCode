@@ -21,6 +21,7 @@ mod xp_76_minimum_window_substring;
 mod xp_48_rotate_image;
 mod xp_206_reverse_linked_list;
 mod xp_234_palindrome_linked_list;
+mod xp_21_merge_two_sorted_lists;
 
 
 struct Solution();
