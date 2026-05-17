@@ -22,6 +22,7 @@ mod xp_48_rotate_image;
 mod xp_206_reverse_linked_list;
 mod xp_234_palindrome_linked_list;
 mod xp_21_merge_two_sorted_lists;
-
+mod xp_2_add_two_numbers;
+mod xp_19_remove_nth_node_from_end_of_list;
 
 struct Solution();
