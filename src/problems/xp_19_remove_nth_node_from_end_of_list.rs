@@ -81,7 +81,6 @@ impl Solution {
         let mut length = 0;
         while let Some(node) = first{
             length +=1;
-
             first = &node.next;
         }
 
