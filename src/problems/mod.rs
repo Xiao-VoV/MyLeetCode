@@ -1,5 +1,6 @@
 mod xp_11_container_with_most_water;
 mod xp_128_longest_consecutive_sequence;
+mod xp_148_sort_list;
 mod xp_15_3_sum;
 mod xp_189_rotate_array;
 mod xp_19_remove_nth_node_from_end_of_list;
@@ -26,4 +27,7 @@ mod xp_560_subarray_sum_equals_k;
 mod xp_56_merge_intervals;
 mod xp_73_set_matrix_zeroes;
 mod xp_76_minimum_window_substring;
+mod xp_94_binary_tree_inorder_traversal;
+mod xp_104_maximum_depth_of_binary_tree;
+mod xp_226_invert_binary_tree;
 struct Solution();
