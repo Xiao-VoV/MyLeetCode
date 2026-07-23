@@ -30,4 +30,12 @@ mod xp_76_minimum_window_substring;
 mod xp_94_binary_tree_inorder_traversal;
 mod xp_104_maximum_depth_of_binary_tree;
 mod xp_226_invert_binary_tree;
+mod xp_101_symmetric_tree;
+mod xp_543_diameter_of_binary_tree;
+mod xp_102_binary_tree_level_order_traversal;
+mod xp_108_convert_sorted_array_to_binary_search_tree;
+mod xp_98_validate_binary_search_tree;
+mod xp_230_kth_smallest_element_in_a_bst;
+mod xp_199_binary_tree_right_side_view;
+
 struct Solution();
