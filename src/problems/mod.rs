@@ -37,5 +37,7 @@ mod xp_108_convert_sorted_array_to_binary_search_tree;
 mod xp_98_validate_binary_search_tree;
 mod xp_230_kth_smallest_element_in_a_bst;
 mod xp_199_binary_tree_right_side_view;
+mod xp_114_flatten_binary_tree_to_linked_list;
+mod xp_105_construct_binary_tree_from_preorder_and_inorder_traversal;
 
 struct Solution();
