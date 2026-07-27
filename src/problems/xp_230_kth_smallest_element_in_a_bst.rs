@@ -74,7 +74,8 @@ impl Solution {
 
         let mut vec = Rc::new(RefCell::new(Vec::<i32>::new()));
         Self::bfs(root,vec,k);
-        vec.borrow()[(k-1) as usize]
+        // vec.borrow()[(k-1) as usize]
+        todo!()
     }
 
     fn bfs(node:Option<Rc<RefCell<TreeNode>>>, vec:Rc<RefCell<Vec<i32>>>,k:i32){
