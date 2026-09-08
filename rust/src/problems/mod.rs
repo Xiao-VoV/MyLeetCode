@@ -54,5 +54,6 @@ mod xp_98_validate_binary_search_tree;
 mod xp_70_climbing_stairs;
 mod xp_118_pascals_triangle;
 mod xp_198_house_robber;
+mod xp_338_counting_bits;
 
 struct Solution();
