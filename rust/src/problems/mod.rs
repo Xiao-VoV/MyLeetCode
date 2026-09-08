@@ -55,5 +55,6 @@ mod xp_70_climbing_stairs;
 mod xp_118_pascals_triangle;
 mod xp_198_house_robber;
 mod xp_338_counting_bits;
+mod xp_392_is_subsequence;
 
 struct Solution();
