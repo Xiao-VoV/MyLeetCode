@@ -1,1 +1,5 @@
 mod xp_5_longest_palindromic_substring;
+mod xp_10_regular_expression_matching;
+mod xp_53_maximum_subarray;
+mod xp_62_unique_paths;
+mod xp_63_unique_paths_ii;
