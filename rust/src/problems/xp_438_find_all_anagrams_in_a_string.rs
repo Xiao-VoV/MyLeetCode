@@ -1,0 +1,85 @@
+use std::vec;
+
+/*
+ * @lc app=leetcode.cn id=438 lang=rust
+ *
+ * [438] Find All Anagrams in a String
+ *
+ * https://leetcode.cn/problems/find-all-anagrams-in-a-string/description/
+ *
+ * algorithms
+ * Medium (54.61%)
+ * Likes:    2024
+ * Dislikes: 0
+ * Total Accepted:    1.2M
+ * Total Submissions: 2.1M
+ * Testcase Example:  '"cbaebabacd"\n"abc"'
+ *
+ * Given two strings s and p, return an array of all the start indices of p's
+ * anagrams in s. You may return the answer in any order.
+ *
+ *
+ * Example 1:
+ *
+ *
+ * Input: s = "cbaebabacd", p = "abc"
+ * Output: [0,6]
+ * Explanation:
+ * The substring with start index = 0 is "cba", which is an anagram of "abc".
+ * The substring with start index = 6 is "bac", which is an anagram of "abc".
+ *
+ *
+ * Example 2:
+ *
+ *
+ * Input: s = "abab", p = "ab"
+ * Output: [0,1,2]
+ * Explanation:
+ * The substring with start index = 0 is "ab", which is an anagram of "ab".
+ * The substring with start index = 1 is "ba", which is an anagram of "ab".
+ * The substring with start index = 2 is "ab", which is an anagram of "ab".
+ *
+ *
+ *
+ * Constraints:
+ *
+ *
+ * 1 <= s.length, p.length <= 3 * 10^4
+ * s and p consist of lowercase English letters.
+ *
+ *
+ */
+use super::Solution;
+// @lc code=start
+impl Solution {
+    pub fn find_anagrams(s: String, p: String) -> Vec<i32> {
+        let s = s.chars().collect::<Vec<char>>();
+        let p: Vec<char> = p.chars().collect::<Vec<char>>();
+
+        if s.len() < p.len() {
+            return vec![];
+        }
+
+        let mut p_ = [0; 26];
+
+        for i in &p {
+            p_[(*i as u8 - 'a' as u8) as usize] += 1;
+        }
+
+        let mut result = vec![];
+
+        for i in 0..=(s.len() - p.len()) {
+            let mut i_ = [0; 26];
+
+            for c in &s[i..(i + p.len())].to_vec() {
+                i_[(*c as u8 - 'a' as u8) as usize] += 1;
+            }
+
+            if i_ == p_ {
+                result.push(i as i32);
+            }
+        }
+        result
+    }
+}
+// @lc code=end
