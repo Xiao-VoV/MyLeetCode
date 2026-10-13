@@ -57,7 +57,7 @@
  *
  *
  */
-
+use crate::Solution;
 // @lc code=start
 // @lc code=start
 impl Solution {
@@ -71,10 +71,10 @@ impl Solution {
         }
 
         let mut memo = vec![vec![None; n]; m];
-        Self::dp(m - 1, n - 1, &obstacle_grid, &mut memo)
+        Self::dp_3(m - 1, n - 1, &obstacle_grid, &mut memo)
     }
 
-    fn dp(m: usize, n: usize, grid: &Vec<Vec<i32>>, memo: &mut Vec<Vec<Option<i32>>>) -> i32 {
+    fn dp_3(m: usize, n: usize, grid: &Vec<Vec<i32>>, memo: &mut Vec<Vec<Option<i32>>>) -> i32 {
         if m == 0 && n == 0 {
             return 1; // 起点，一定可达（前面已经检查过不是障碍）
         }
@@ -86,11 +86,11 @@ impl Solution {
         }
 
         let res = if m == 0 {
-            Self::dp(m, n - 1, grid, memo) // 第一行：只能从左来
+            Self::dp_3(m, n - 1, grid, memo) // 第一行：只能从左来
         } else if n == 0 {
-            Self::dp(m - 1, n, grid, memo) // 第一列：只能从上来
+            Self::dp_3(m - 1, n, grid, memo) // 第一列：只能从上来
         } else {
-            Self::dp(m - 1, n, grid, memo) + Self::dp(m, n - 1, grid, memo)
+            Self::dp_3(m - 1, n, grid, memo) + Self::dp_3(m, n - 1, grid, memo)
         };
 
         memo[m][n] = Some(res);

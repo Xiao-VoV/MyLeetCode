@@ -3,3 +3,4 @@ mod xp_10_regular_expression_matching;
 mod xp_53_maximum_subarray;
 mod xp_62_unique_paths;
 mod xp_63_unique_paths_ii;
+mod xp_64_minimum_path_sum;

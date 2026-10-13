@@ -58,10 +58,10 @@ use crate::Solution;
 impl Solution {
     pub fn unique_paths(m: i32, n: i32) -> i32 {
         let mut memo: Vec<Vec<Option<i32>>> = vec![vec![None; n as usize]; m as usize];
-        Self::dp((m - 1) as usize, (n - 1) as usize, &mut memo)
+        Self::dp_1((m - 1) as usize, (n - 1) as usize, &mut memo)
     }
     // [m][n] = [m-1][n] + [m][n-1]
-    fn dp(m: usize, n: usize, memo: &mut Vec<Vec<Option<i32>>>) -> i32 {
+    fn dp_1(m: usize, n: usize, memo: &mut Vec<Vec<Option<i32>>>) -> i32 {
         if m == 0 || n == 0 {
             return 1;
         }
@@ -69,7 +69,7 @@ impl Solution {
             return res;
         }
 
-        let res = Self::dp(m - 1, n, memo) + Self::dp(m, n - 1, memo);
+        let res = Self::dp_1(m - 1, n, memo) + Self::dp_1(m, n - 1, memo);
         memo[m][n] = Some(res);
         res
     }
